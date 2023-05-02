@@ -6,7 +6,7 @@ from utilities.tools import classify_image_process
 def handler(event, context):
     # Get the data from the request
     # Extract the image data and model_name
-    body = event.get('body')
+    body = json.loads(event.get('body'))
 
     image_data = body.get('image_data')
     model_name = body.get('model_name')
