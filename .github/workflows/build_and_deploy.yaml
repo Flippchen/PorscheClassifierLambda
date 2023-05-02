@@ -52,3 +52,7 @@ jobs:
         docker build . -t ${{ secrets.REPO }}
         docker push ${{ secrets.REPO }}
         echo "image=${{ secrets.REPO }}" >> $GITHUB_OUTPUT
+
+    - name: Deploy to AWS Lambda
+      run: |
+        aws lambda update-function-code --function-name ${{ secrets.LAMBDA_NAME }} --image-uri ${{ secrets.REPO }}
