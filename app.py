@@ -8,7 +8,7 @@ def handler(event, context):
     # Extract the image data and model_name
     image_data = event.get('image_data')
     model_name = event.get('model_name')
-    print(model_name)
+    print(event)
     # Convert the base64 image data to bytes
     top3_predictions = classify_image_process(image_data, model_name)
 
