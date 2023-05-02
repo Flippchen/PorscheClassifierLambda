@@ -1,4 +1,4 @@
-# Porsche Classifier Lambda Function
+# PorscheClassifierLambda
 
 NUMBA_CACHE_DIR /tmp
 
