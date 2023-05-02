@@ -15,6 +15,6 @@ COPY models ${LAMBDA_TASK_ROOT}/models
 RUN true
 COPY requirements.txt ${LAMBDA_TASK_ROOT}
 RUN true
-COPY rembg /tmp
+COPY rembg/isnet-general-use.onnx /tmp/isnet-general-use.onnx
 
 CMD [ "app.handler" ]
