@@ -50,6 +50,6 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t ${{ secrets.REPO }} .
+        docker build . -t ${{ secrets.REPO }}
         docker push ${{ secrets.REPO }}
         echo "image=${{ secrets.REPO }}" >> $GITHUB_OUTPUT
