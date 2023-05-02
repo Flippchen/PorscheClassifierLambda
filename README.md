@@ -1,12 +1,16 @@
 # PorscheClassifierLambda
 
-GitHub release (latest by date including pre-releases)
-GitHub Workflow Status
-GitHub repo size
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Flippchen/PorscheClassifierLambda?include_prereleases&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Flippchen/PorscheClassifierLambda/build_and_deploy.yaml?style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Flippchen/PorscheClassifierlambda?style=flat-square)
+
+
 ## Overview
-This repository contains the AWS Lambda function for the PorscheInsight-CarClassification-AI project, which classifies Porsche cars based on their images. The Lambda function is built using AWS Lambda and the Python 3.10 runtime. It handles the image classification process by utilizing the pre-trained AI models from the main PorscheInsight-CarClassification-AI repository.
+This repository contains the AWS Lambda function for the [PorscheInsight-CarClassification-AI project](https://github.com/Flippchen/PorscheInsight-CarClassification-AI), which classifies Porsche cars based on their images. The Lambda function is built using AWS Lambda and the Python 3.10 runtime. It handles the image classification process by utilizing the pre-trained AI models from the main [PorscheInsight-CarClassification-AI](https://github.com/Flippchen/PorscheInsight-CarClassification-AI) repository.
 
 The Lambda function is designed to be simple and easy to deploy, allowing users to access the car classification service from anywhere in the world.
+
+
 ## Features
 - AWS Lambda function for image classification
 - Compatible with Python 3.10 runtime
@@ -16,7 +20,7 @@ The Lambda function is designed to be simple and easy to deploy, allowing users 
 ## Prerequisites
 - An AWS account with access to AWS Lambda, API Gateway, and other necessary services
 - Docker for building the Lambda function container image
-- Python 3.8 or higher for local testing (optional)
+- Python 3.9 or higher for local testing (optional)
 
 ## Deployment
 1. Clone this repository to your local machine.
@@ -47,7 +51,17 @@ docker push <your_account_id>.dkr.ecr.<your_aws_region>.amazonaws.com/porscheins
 NUMBA_CACHE_DIR=/tmp
 ```
 ## Usage
-You can integrate the Lambda function with AWS API Gateway to expose a public REST API, which allows users to send images for classification. Make sure to configure the API Gateway with the correct Lambda function ARN and the required request/response settings.
+You can integrate the Lambda function with AWS API Gateway to expose a public REST API, which allows users to send images for classification.
+
+The Lambda function expects a JSON object with the following format:
+```
+{
+  "image": "<base64_encoded_image>",
+    "model_type": "<model_name>"
+}
+```
+## Disclaimer
+This is not an official Porsche product and is not affiliated with or endorsed by Porsche AG.
 
 
 
