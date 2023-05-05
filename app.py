@@ -15,4 +15,12 @@ def handler(event, context):
     # Convert the base64 image data to bytes
     top3_predictions = classify_image_process(image_data, model_name)
 
-    return top3_predictions
+    return {
+        "statusCode": 200,
+        'headers': {
+            'Access-Control-Allow-Headers': 'Content-Type,x-csrftoken',
+            'Access-Control-Allow-Origin': 'http://127.0.0.1:8000',
+            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+        },
+        "body": top3_predictions
+            }
