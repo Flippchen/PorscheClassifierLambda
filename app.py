@@ -7,7 +7,7 @@ def handler(event, context):
     # Get the data from the request
     # Extract the image data and model_name
     print('event: ', event)
-    if event['http']['method'] == 'OPTIONS':
+    if event["requestContext"]['http']['method'] == 'OPTIONS':
         return {
             "statusCode": 200,
             'headers': {
