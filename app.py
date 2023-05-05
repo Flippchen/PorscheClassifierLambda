@@ -23,4 +23,4 @@ def handler(event, context):
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
         "body": top3_predictions
-            }
+    }
