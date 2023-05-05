@@ -8,11 +8,12 @@ def handler(event, context):
     # Extract the image data and model_name
     print('event: ', event)
     if event["requestContext"]['http']['method'] == 'OPTIONS':
+
         return {
             "statusCode": 200,
             'headers': {
                 'Access-Control-Allow-Headers': 'Content-Type,x-csrftoken',
-                'Access-Control-Allow-Origin': 'http://127.0.0.1:8000,https://classify.autos',
+                'Access-Control-Allow-Origin': 'https://classify.autos',
                 'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
             }
         }
@@ -29,7 +30,7 @@ def handler(event, context):
         "statusCode": 200,
         'headers': {
             'Access-Control-Allow-Headers': 'Content-Type,x-csrftoken',
-            'Access-Control-Allow-Origin': 'http://127.0.0.1:8000,https://classify.autos',
+            'Access-Control-Allow-Origin': 'https://classify.autos',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
         "body": top3_predictions
