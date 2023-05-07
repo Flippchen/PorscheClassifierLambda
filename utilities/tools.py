@@ -5,7 +5,7 @@ import base64
 from io import BytesIO
 from PIL import Image
 from utilities.class_names import get_classes_for_model
-from utilities.prepare_images import replace_background, resize_and_pad_image
+from utilities.prepare_images import replace_background, resize_and_pad_image, fix_image
 
 from rembg import new_session
 
@@ -70,8 +70,8 @@ def classify_image_process(image_data: str, model_name: str) -> List[Tuple[str, 
     image_data = base64.b64decode(image_data)
     image = Image.open(BytesIO(image_data))
 
-    if image.mode != "RGB":
-        image = image.convert("RGB")
+    # Fix image orientation and color mode if needed
+    image = fix_image(image)
 
     # Get correct input size for model
     input_size = models[model_name].get_inputs()[0].shape[1:3]

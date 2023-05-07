@@ -1,7 +1,9 @@
 import io
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, ImageFile
 from rembg import remove, new_session
 from PIL.Image import Image as PILImage
+
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
 def replace_background(im: PILImage, post_process_mask=False, session=None) -> PILImage:
@@ -82,3 +84,12 @@ def resize_and_pad_image(image: PILImage, target_size: tuple, fill_color=(0, 0, 
     padded_image = ImageOps.expand(resized_image, (left_padding, top_padding, padding_width - left_padding, padding_height - top_padding), fill=fill_color)
 
     return padded_image
+
+
+def fix_image(image):
+    # Convert image to RGB if not already
+    if image.mode != "RGB":
+        image = image.convert("RGB")
+    # Fix orientation if necessary
+    image = ImageOps.exif_transpose(image)
+    return image
