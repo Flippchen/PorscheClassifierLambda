@@ -9,7 +9,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 def replace_background(im: PILImage, post_process_mask=False, session=None) -> PILImage:
     # if not isinstance(im, PILImage):
     #   im = Image.open(io.BytesIO(im))
-    session = session or new_session("isnet-general-use")
+    session = session or new_session("u2net")
     im = remove(im, post_process_mask=post_process_mask, session=session)
     im = resize_cutout(im)
 
